@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<head>
+    <style type="text/css">
+        .mainNav {
+            background: gray;
+            cursor: pointer;
+            float: left;
+            margin-right: 1em;
+            width: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div id="mainNavItem" class="mainNav">
+        Hover me!
+        <ul style="display: none">
+            <li>Foo</li>
+            <li>Bar</li>
+        </ul>
+    </div>
+
+    <div id="mainNavItem2" class="mainNav">
+        Click me! <span>:)</span>
+        <ul style="display: none">
+            <li>Alice</li>
+            <li>Bob</li>
+        </ul>
+    </div>
+
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <script src="../jquery.dropdownmenu.js"></script>
+
+    <script>
+        $('#mainNavItem').dropDownMenu();
+        $('#mainNavItem2').dropDownMenu({hover: false});
+    </script>
+</body>
