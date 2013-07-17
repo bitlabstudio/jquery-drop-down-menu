@@ -8,9 +8,12 @@
                 //   (or touch)
                 hover: true
                 ,click: true
+                ,onNavShow: function() {}
+                ,onNavHide: function() {}
             }, options );
 
             var _this = this;
+            _this[0].dropDownMenuSettings = settings;
 
             if ( settings.hover ) {
                 $(this).hover(
@@ -30,14 +33,18 @@
                     // "anywhere" was inside our main nav element
 
                     is_inside = false;
+                    $(e.target).parents().each(function(i, element) {
+                        // check if we clicked on any child of the main nav
+                        // element
+                        if (element === _this[0]) {
+                            is_inside = true;
+                        }
+                    });
                     if ($(e.target)[0] === _this[0]) {
-                        is_inside = true;
-                    } else if ($(e.target).parents(_this).first()[0] === _this[0]) {
-                        // in case our main nav element contains more elements
-                        // clicking on those should still be treated like
-                        // clicking on the main nav element
+                        // check if we clicked exactly at the main nav element
                         is_inside = true;
                     }
+
                     if (is_inside) {
                         // if I clicked somewhere into the toolbar icon...
                         _this.dropDownMenu('toggle_nav', true);
@@ -53,6 +60,7 @@
             // Animation to hide the dropdown menu of a given toolbar item.
 
             // First we remove all indicators that this item is the active one
+            $(this)[0].dropDownMenuSettings.onNavHide(this);
             $(this).removeAttr('data-clicked');
             $(this).removeAttr('data-visible');
 
@@ -67,6 +75,7 @@
         }
         ,show_nav: function( ) {
             // Shows the dropdown menu for the given toolbar item.
+            $(this)[0].dropDownMenuSettings.onNavShow(this);
             $(this).attr('data-visible', 'true');
             $(this).find('ul').css('display', 'block');
             $(this).find('ul').stop();
