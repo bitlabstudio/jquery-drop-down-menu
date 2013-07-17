@@ -52,4 +52,4 @@ If you don't want hover or click functionality, you can disable it:
 Please note that the plugin dynamically adds the attributes `data-clicked` and
 `data-visible` to your main menu item, so you should make sure not to use them
 anywhere else. If this collides with your other code, we can easily make these
-attributes variable via options.
+attributes variable via options. If you need this, please open an issue.
