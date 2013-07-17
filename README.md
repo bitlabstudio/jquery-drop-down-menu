@@ -6,6 +6,8 @@ down menu for this element.
 We have mobile devices in mind, so the plugin works with both, hover events
 and click (think: touch) events.
 
+Demo: http://bitmazk.github.io/jquery-drop-down-menu
+
 
 ## Usage
 
